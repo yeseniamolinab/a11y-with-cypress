@@ -50,14 +50,13 @@ Cypress.Commands.overwrite(
     'visit',
     (originalFn: Cypress.CommandOriginalFn<'visit'>, url: string | Partial<Cypress.VisitOptions>, options?: Partial<Cypress.VisitOptions>) => {
         const baseUrl = Cypress.config("baseUrl")?.replace(/\/$/, "") || process.env.CYPRESS_BASE_URL;
-        console.log('baseUrl', Cypress.config("baseUrl"));
         originalFn({
           url: `${baseUrl}${url}`,
             ...options,
         });
 
-        // Inject Axe after the page loads
-    cy.then(() => {
+      // Inject Axe after the page loads
+      cy.then(() => {
         cy.injectAxe();
       });
         

@@ -23,7 +23,7 @@ export const a11yConfigOptions: RunOptions = {
   export function terminalLog(violations: Result[]): void {
     cy.task(
       'log',
-      `${violations.length} accessibility violation${
+      `${violations.length} accessibility violation ${
         violations.length === 1 ? '' : 's'
       } ${violations.length === 1 ? 'was' : 'were'} detected`
     );
